@@ -9,19 +9,19 @@ import com.abstractfactory.template.model.loja.gustavo.loja.models.Tablet;
 
 public class FabricaSamsung implements EletronicoFactory{
 
-    public Produto criarCelular() {
-        return new Celular();
+    public Produto criarCelular(String nome, String marca, String tipo, double valor, String descricao) {
+        return new Celular(nome, marca, tipo, valor, descricao);
     }
 
-    public Produto criarTablet() {
-        return new Tablet();
+    public Produto criarTablet(String nome, String marca, String tipo, double valor, String descricao) {
+        return new Celular(nome, marca, tipo, valor, descricao);
     }
 
-        public Produto criarTV() {
-        return new TV();
+        public Produto criarTV(String nome, String marca, String tipo, double valor, String descricao) {
+            return new Celular(nome, marca, tipo, valor, descricao);
     }
 
-    public Produto criarLaptop() {
-        return new Laptop();
+    public Produto criarLaptop(String nome, String marca, String tipo, double valor, String descricao) {
+        return new Celular(nome, marca, tipo, valor, descricao);
     }
 }

@@ -14,8 +14,12 @@ public class Tablet implements Produto {
 
     private String descricao;
 
-    public Tablet(String string, String string2, String string3, double d, String string4) {
-        //TODO Auto-generated constructor stub
+    public Tablet(String nome, String marca, String tipo, double valor, String descricao) {
+        this.nome = nome;
+        this.marca = marca;
+        this.tipo = tipo;
+        this.valor = valor;
+        this.descricao = descricao;
     }
 
     public Tablet() {

@@ -13,6 +13,14 @@ public class Laptop implements Produto {
     private double valor;
 
     private String descricao;
+
+    public Laptop(String nome, String marca, String tipo, double valor, String descricao) {
+        this.nome = nome;
+        this.marca = marca;
+        this.tipo = tipo;
+        this.valor = valor;
+        this.descricao = descricao;
+    }
     
     // @Override
     // public String getDescricao() {
