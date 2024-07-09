@@ -1,1 +1,1 @@
-# Projeto aberto
+# Loja de eletrônicos
