@@ -6,14 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.abstractfactory.template.model.loja.gustavo.loja.interfaces.Produto;
 
-public interface CelularJpaRepository extends JpaRepository <Produto, String>{
-
-    List<Produto> findByCelularApple();
-
-    List<Produto> findByCelularSamsung();
-
-    List<Produto> findByNome(String nome);
-
+public interface ProdutoJpaRepository extends JpaRepository <Produto, Long>{
     List<Produto> findByTipo(String tipo);
-    
+    List<Produto> findByMarca(String marca);
 }

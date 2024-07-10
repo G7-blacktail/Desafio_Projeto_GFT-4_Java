@@ -3,11 +3,10 @@ package com.abstractfactory.template.model.loja.gustavo.loja.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.abstractfactory.template.model.loja.gustavo.loja.factory.EletronicoFactory;
-import com.abstractfactory.template.model.loja.gustavo.loja.service.FabricaApple;
-import com.abstractfactory.template.model.loja.gustavo.loja.service.FabricaSamsung;
-// import com.abstractfactory.template.model.loja.gustavo.loja.service.LaptopFactory;
-// import com.abstractfactory.template.model.loja.gustavo.loja.service.TVFactory;
+import com.abstractfactory.template.model.loja.gustavo.loja.factory.ProdutoFactory;
+import com.abstractfactory.template.model.loja.gustavo.loja.service.factories.AppleProdutoFactory;
+import com.abstractfactory.template.model.loja.gustavo.loja.service.factories.SamsungProdutoFactory;
+
 
 @Configuration
 public class AppConfig {
@@ -22,12 +21,12 @@ public class AppConfig {
     // }
 
     @Bean
-    public EletronicoFactory fabricaApple() {
-        return new FabricaApple();
+    public ProdutoFactory fabricaApple() {
+        return new AppleProdutoFactory();
     }
     
     @Bean
-    public EletronicoFactory fabricaSamsung() {
-        return new FabricaSamsung();
+    public ProdutoFactory fabricaSamsung() {
+        return new SamsungProdutoFactory();
     }
 }
