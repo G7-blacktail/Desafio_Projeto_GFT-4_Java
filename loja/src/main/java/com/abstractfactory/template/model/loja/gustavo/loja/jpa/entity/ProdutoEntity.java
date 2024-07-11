@@ -1,5 +1,7 @@
 package com.abstractfactory.template.model.loja.gustavo.loja.jpa.entity;
 
+import com.abstractfactory.template.model.loja.gustavo.loja.interfaces.Produto;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_produto")
-public class ProdutoEntity {
+public class ProdutoEntity implements Produto{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,6 +46,30 @@ public class ProdutoEntity {
 
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    @Override
+    public String getMarca() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getMarca'");
+    }
+
+    @Override
+    public String getTipo() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTipo'");
+    }
+
+    @Override
+    public double getValor() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getValor'");
+    }
+
+    @Override
+    public String getDescricao() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDescricao'");
     }
 
 }

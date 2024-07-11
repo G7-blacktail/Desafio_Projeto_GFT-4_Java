@@ -2,20 +2,37 @@ package com.abstractfactory.template.model.loja.gustavo.loja.service;
 
 import java.util.List;
 
-import com.abstractfactory.template.model.loja.gustavo.loja.interfaces.Produto;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.abstractfactory.template.model.loja.gustavo.loja.factory.ProdutoFactory;
+import com.abstractfactory.template.model.loja.gustavo.loja.factory.ProdutoFactoryProvider;
+    import com.abstractfactory.template.model.loja.gustavo.loja.interfaces.Produto;
+    import com.abstractfactory.template.model.loja.gustavo.loja.jpa.entity.ProdutoEntity;
 import com.abstractfactory.template.model.loja.gustavo.loja.repository.ProdutoJpaRepository;
+import com.abstractfactory.template.model.loja.gustavo.loja.jpa.converter.ProdutoJpaConverter[];
 
 public class ProdutoServiceImpl implements ProdutoService {
 
+    @Autowired
+    private ProdutoFactoryProvider factoryProvider;
+
+    @Autowired
     private ProdutoJpaRepository produtoJpaRepository;
 
-    public ProdutoServiceImpl(ProdutoJpaRepository produtoJpaRepository) {
+    @Autowired
+    private ProdutoJpaConverter ProdutoJpaConverter;
+
+    public ProdutoServiceImpl(ProdutoJpaRepository produtoJpaRepository, ProdutoFactoryProvider factoryProvider, ProdutoJpaConverter produtoJpaConverter) {
         this.produtoJpaRepository = produtoJpaRepository;
+        this.factoryProvider = factoryProvider;
+        this.ProdutoJpaConverter = produtoJpaConverter;
     }
 
     @Override
     public void criarProduto(Produto produto) {
-        this.produtoJpaRepository.save(produto);
+        ProdutoFactory factory = factoryProvider.getFactory(produto.getMarca());
+        ProdutoEntity produtoEntity = factory.criarProduto(produto.getTipo(), produto.getMarca());
+        this.produtoJpaRepository.save(this.ProdutoJpaConverter.convertBack(produtoEntity));
     }
 
     @Override
