@@ -7,3 +7,4 @@ public interface Produto {
     double getValor();
     String getDescricao();
 }
+        

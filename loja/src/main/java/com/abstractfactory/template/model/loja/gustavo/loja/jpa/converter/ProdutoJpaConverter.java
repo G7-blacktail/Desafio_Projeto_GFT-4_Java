@@ -18,7 +18,6 @@ public class ProdutoJpaConverter {
         ProdutoRepresentation rep = new ProdutoRepresentation();
         rep.setId(obj.getId());
         rep.setNome(obj.getNome());
-        rep.setPreco(obj.setPreco(null));
         return rep;
     }
 }

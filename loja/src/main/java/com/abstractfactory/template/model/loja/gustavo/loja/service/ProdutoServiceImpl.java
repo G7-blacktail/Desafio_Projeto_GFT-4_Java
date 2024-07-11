@@ -3,14 +3,16 @@ package com.abstractfactory.template.model.loja.gustavo.loja.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.abstractfactory.template.model.loja.gustavo.loja.factory.ProdutoFactory;
 import com.abstractfactory.template.model.loja.gustavo.loja.factory.ProdutoFactoryProvider;
-    import com.abstractfactory.template.model.loja.gustavo.loja.interfaces.Produto;
-    import com.abstractfactory.template.model.loja.gustavo.loja.jpa.entity.ProdutoEntity;
+import com.abstractfactory.template.model.loja.gustavo.loja.interfaces.Produto;
+import com.abstractfactory.template.model.loja.gustavo.loja.jpa.entity.ProdutoEntity;
 import com.abstractfactory.template.model.loja.gustavo.loja.repository.ProdutoJpaRepository;
-import com.abstractfactory.template.model.loja.gustavo.loja.jpa.converter.ProdutoJpaConverter[];
+import com.abstractfactory.template.model.loja.gustavo.loja.jpa.converter.ProdutoJpaConverter;
 
+@Service
 public class ProdutoServiceImpl implements ProdutoService {
 
     @Autowired
@@ -29,29 +31,29 @@ public class ProdutoServiceImpl implements ProdutoService {
     }
 
     @Override
-    public void criarProduto(Produto produto) {
+    public void criarProduto(ProdutoEntity produto) {
         ProdutoFactory factory = factoryProvider.getFactory(produto.getMarca());
-        ProdutoEntity produtoEntity = factory.criarProduto(produto.getTipo(), produto.getMarca());
-        this.produtoJpaRepository.save(this.ProdutoJpaConverter.convertBack(produtoEntity));
+        ProdutoEntity produtoEntity = (ProdutoEntity) factory.criarProduto(produto.getTipo(), produto.getMarca());
+        this.produtoJpaRepository.save(produtoEntity);
     }
 
     @Override
-    public List<Produto> consultarProdutos() {
+    public List<ProdutoEntity> consultarProdutos() {
         return this.produtoJpaRepository.findAll();
     }
 
     @Override
-    public Produto consultarProdutoPorId(Long id) {
+    public ProdutoEntity consultarProdutoPorId(Long id) {
         return this.produtoJpaRepository.findById(id).orElse(null); 
     }
 
     @Override
-    public List<Produto> consultarProdutosPorTipo(String tipo) {
+    public List<ProdutoEntity> consultarProdutosPorTipo(String tipo) {
         return this.produtoJpaRepository.findByTipo(tipo);
     }
 
     @Override
-    public List<Produto> consultarProdutosPorMarca(String marca) {
+    public List<ProdutoEntity> consultarProdutosPorMarca(String marca) {
         return this.produtoJpaRepository.findByMarca(marca);
     }
 
