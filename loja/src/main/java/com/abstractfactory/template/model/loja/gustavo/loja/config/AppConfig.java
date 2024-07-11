@@ -10,16 +10,6 @@ import com.abstractfactory.template.model.loja.gustavo.loja.service.factories.Sa
 
 @Configuration
 public class AppConfig {
-    // @Bean
-    // public EletronicoFactory tvFactory() {
-    //     return new TVFactory();
-    // }
-
-    // @Bean
-    // public EletronicoFactory laptopFactory() {
-    //     return new LaptopFactory();
-    // }
-
     @Bean
     public ProdutoFactory fabricaApple() {
         return new AppleProdutoFactory();
